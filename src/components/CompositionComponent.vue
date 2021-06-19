@@ -1,6 +1,7 @@
 <template>
   <div>
     <p>{{ title }}</p>
+    <metronome></metronome>
     <ul>
       <li v-for="todo in todos" :key="todo.id" @click="increment">
         {{ todo.id }} - {{ todo.content }}
@@ -18,6 +19,7 @@ import {
   defineComponent, PropType, computed, ref, toRef, Ref
 } from '@vue/composition-api'
 import { METHODS } from 'http'
+import Metronome from './Metronome.vue'
 import { Todo, Meta } from './models'
 import NoteKeyboard from './NoteKeyboard.vue'
 
@@ -37,7 +39,7 @@ function useDisplayTodo (todos: Ref<Todo[]>) {
 }
 
 export default defineComponent({
-  components: { NoteKeyboard },
+  components: { NoteKeyboard, Metronome },
   name: 'CompositionComponent',
   props: {
     title: {
